@@ -1,0 +1,31 @@
+
+
+<div class = "back">
+<img class= "logo2" src="./img/logo2.png" alt="a" />
+<div class ="signup">
+<h1 >Login</h1><br>
+<form method="post" action ="/login">
+   
+
+    <label for="email">Email</label> <br>   
+    <input class = "sign" type="email" id="email" name="email"> 
+    <p>{{emailError}}</p>
+    <br> <br>
+
+
+    <label for="password">Password</label> <br>   
+    <input class = "sign" type = "password" id="password" name="password" placeholder = "At least 6 characters"> <br>
+    <p class = "condition">Passwords must consist of at least 6 characters.</p> 
+    <p>{{passError}}</p>
+    <br>
+     
+    <input class = "signbutton" type="submit" value="Sign-In"> <br> <br>
+
+    <p class ="condition"> New to Luxia?</p> 
+
+
+    <input class = "signbutton" type="submit" value="Create your Luxia account" > <br><br>
+
+</form>
+</div>
+</div>

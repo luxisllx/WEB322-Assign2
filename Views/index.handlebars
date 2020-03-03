@@ -1,0 +1,29 @@
+
+
+
+<div class = "banner">
+    <img class= "promo" src="./img/banner2.jpg" alt="1" />
+</div>
+<br>
+<h1>Categories</h1>
+<div class = "product">
+    {{#each categories}}
+
+        <div class = "product1">
+            <img class = "one" src = "{{this.image}}" alt = "2" />
+            <p class = "productinfo">{{this.description}}</p>
+        </div>
+       
+    {{/each}}
+</div>
+<div class = "show">
+<a href = "/products" > Show More... </a></div>
+<h1>Best Sellers</h1>
+<div class = "product">
+    {{#each bestseller}}
+        <div class = "product1">
+            <img class = "one" src = "{{this.image}}" alt = "2" />
+            <p class = "productinfo">{{this.description}}</p>
+        </div>
+    {{/each}}
+</div>

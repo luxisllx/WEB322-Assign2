@@ -1,0 +1,38 @@
+
+<h1>Beauty: Lips</h1>
+<p>Search by Category</p>
+<div class = "product">
+   
+    {{#each products}}
+    
+        <div class = "product1">
+            <img class = "one" src = "{{this.image}}" alt = "2" />
+            <p class = "productinfo">{{this.description}}</p>
+        </div>
+   
+    {{/each}}
+</div>
+
+
+<p>Product List</p>
+<div class = "productbest">
+    {{#each productsbest}}
+        <div class = "productbest1">
+
+            {{#if this.bestseller }}
+            <img class = "bestsellericon" src = "/img/besticon.png"/>
+            {{/if}}
+
+
+
+
+            
+            <img class = "two" src = "{{this.image}}" alt = "2" />
+             <p class = "producttitle">{{this.title}}</p>
+            <p class = "productinfo">{{this.category}}</p>
+            <p class = "productprice">{{this.price}}</p>
+           
+        </div>
+
+    {{/each}}
+</div>

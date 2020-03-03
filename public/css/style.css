@@ -1,0 +1,362 @@
+*
+{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+
+body
+{
+    font-size: 1.4rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color:white;
+  
+}
+
+h1,h2,h3
+{
+    margin-bottom: 16px;
+    margin-top:10px;
+    font-family: 'Slabo 27px', serif;
+}
+
+p{
+    margin-bottom: 8pxs;
+}
+
+
+main
+{
+    padding:16px 32px;
+}
+header
+{
+    background-color: black;
+    display:grid;
+    grid-template-columns: 1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr 1fr  1fr  1fr  1fr;
+    
+
+}
+
+.logo 
+{
+    width: 200%;
+    height:100%;
+    
+      
+}
+
+.logo2
+{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.search
+{
+    grid-column: 3/span 6;
+    padding: 10px;
+}   
+
+input[type=search]
+{
+    width:100%;
+    height: 100%;
+    padding: 5px;
+}
+
+header h1 
+{
+    font-size:1.5rem;
+    padding:16px 32px;
+    color:#fff;
+}
+
+nav
+{
+    justify-self:stretch;
+    grid-column: 9/span 4;
+     
+}
+nav > ul
+{
+    vertical-align:middle;
+    height:100%;
+}
+nav > ul > li
+{
+    display: inline-block;
+    width: 24%;
+    text-align:center;
+    vertical-align:middle;
+    padding: 2% 0%;
+    font-family: 'Slabo 27px', serif;
+    
+
+
+    
+    
+    
+}
+
+nav > ul > li > a 
+
+{
+    color:#fff;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+
+.banner
+{
+    width:100%;
+    
+}
+
+.promo
+{
+    padding:0px 10%;
+    width:90%;
+    height:250px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    background-color: rgb(223, 197, 197);
+}
+
+.product
+{
+    display:grid;
+    align-content: space-evenly;
+    width: 100%;
+    grid-template-columns: 1fr  1fr  1fr  1fr;
+    font-family: 'Slabo 27px', serif;
+
+}
+
+.product1, category1
+{
+    padding:10%;
+    width: 90%;
+    height: 350px;
+    margin:5%;
+    border-style: outset;
+    
+}
+.category
+{
+    display:grid;
+    align-content: space-evenly;
+    width: 100%;
+    grid-template-columns: 1fr  1fr  1fr  1fr;
+
+}
+
+.productbest
+{
+    display:grid;
+    align-content: space-evenly;
+    width: 100%;
+    grid-template-columns: 1fr  1fr  1fr ;
+
+
+}
+
+.productbest1
+{
+    padding:5% 20%;
+    width: 90%;
+    height: 425px;
+    margin:5%;
+    border-style: outset;
+    font-family: 'Slabo 27px', serif;
+    position:relative;
+    top: 0;
+    left: 0;
+}
+
+.one 
+{
+    width:100%;
+    height:100%;
+}
+
+.bestsellericon
+{
+    height:10%;
+    position:absolute;
+    top: 10%;
+    left: 10%;
+}
+.two
+{
+    width:75%;
+    height:75%;
+    position:relative;
+    top: 0;
+    left: 0;
+    
+      
+}
+
+.producttitle
+{
+    height:6%;
+}
+
+.productinfo
+{
+    height:6%;
+    
+}
+
+.productprice
+{
+    height:6%;
+}
+
+
+.show
+{
+    
+    text-align: end;
+    font-family: 'Slabo 27px', serif;
+    color: black;
+    margin-right:0;
+    
+}
+
+
+
+.signup
+{
+    margin: 0 auto;
+    border-style:solid;
+    padding:40px;
+
+    width:25%;
+    font-family: 'Slabo 27px', serif;
+    background-color:white;
+   
+}
+
+.back
+{
+    background-image: url(/img/back.jpg);
+    opacity: 0.8;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+}
+.sign
+{
+width:100%;
+height:30px;
+border-radius: 5px;
+padding: 5px;
+font-family: 'Slabo 27px', serif;
+
+
+}
+
+.signbutton 
+{
+    background-color: black;
+    
+    border-style: outset;
+    width:100%;
+    height: 30px;
+    border-radius:5px;
+    border-width:1px;
+    color:white;
+    
+}
+
+.condition
+{
+    font-size: 50%;
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
+    
+}
+footer
+{
+    background-color:black;
+    height:60px;
+  
+    width: 100%;
+    
+}
+.footbox
+{
+    float:right;
+    width:40%;
+    vertical-align:middle;
+}
+
+.fa {
+    padding: 1% 2%;
+    width:5%;
+    
+    text-align: center;
+    text-decoration: none;
+    margin-right:0;
+    
+  }
+
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook {
+    
+    color: white;
+  }
+  
+  .fa-twitter {
+    
+    color: white;
+  }
+  
+  .fa-google {
+    
+    color: white;
+  }
+
+  .fa-linkedin {
+   
+    color: white;
+  }
+
+  .fa-instagram {
+    
+    color: white;
+  }
+  
+.footmenu
+{
+padding: 2% 5%;
+height:60px;
+vertical-align:middle;
+display:inline-block;
+line-height:normal;
+color:white;
+font-family: 'Slabo 27px', serif;
+text-decoration: none;
+}
+  
+.copyright
+{
+    
+    color:white;
+    background-color: black;
+    text-align:right;
+    font-family: 'Slabo 27px', serif;
+}
