@@ -23,6 +23,8 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false}));
 
+const router = express.Router();
+
 //Route for the Home Page
 app.get("/",(req,res)=>{
 
