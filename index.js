@@ -9,6 +9,7 @@ const categoryModel = require("./model/categories");
 const bestsellerModel = require("./model/bestseller");
 const productsbestModel = require("./model/productsbest");
 const bodyParser = require("body-parser");
+require('dotenv').config({path:"./config/keys.env"});
 
 
 
@@ -74,38 +75,20 @@ app.post("/login",(req,res)=>{
 
     let emailError = "";
     let passError="";
-    const errorMsg = [];
+    
 
     if(req.body.email =="")
     {
-        errorMsg.push({emailError: "Please enter a valid Email"});
+        
         emailError = "Please enter a valid Email";
     }
 
     if(req.body.password =="")
     {
-        errorMsg.push({passError: "Please enter a valid Password"});
+        
         passError="Please enter a valid Password";
     }
-/*
-    if(errorMsg.length > 0)
-    {
-        res.render("login",{
-            title:"login",
-            headingInfo: "Login Page",
-            emailError: `${emailError}`,
-            passError:`${passError}`
-    
-        });
-    }
-    else{
-        res.render("login",{
-            title:"login",
-            headingInfo: "Login Page"
-    
-        });
-    }
-*/
+
     res.render("login",{
         title:"login",
         headingInfo: "Login Page",
@@ -116,7 +99,38 @@ app.post("/login",(req,res)=>{
 
 });
 
-const PORT=3000;
+
+app.post("/signup",(req,res)=>{
+
+    const {firstName,lastName,email,message} = req.body;
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+    const msg = {
+    to: 'luxisllx@gmail.com',
+    from: `${email}`,
+    subject: 'Contact Us Form Submit',
+    html: 
+    `Visitor's Full Name ${firstName} ${lastName}
+    Visitor's Email Address ${email}
+    Visitor's Message ${message}
+    `,
+    };
+    //Asynchronous operation (Dunno how long this will take to execute)
+
+    sgMail.send(msg)
+    .then(()=>{
+
+        res.redirect("/");
+    })
+    .catch(err=>{
+        console.log(`Error ${err}`);
+    })
+    
+    
+});
+
+
+const PORT=process.env.PORT;
 //This creates an Express Web Server that listens to HTTP Reuqest on port 3000
 app.listen(PORT,()=>{
     console.log(`Web Server Started`);
