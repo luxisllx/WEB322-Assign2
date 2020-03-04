@@ -77,7 +77,6 @@ app.post("/login",(req,res)=>{
 
     let emailError = "";
     let passError="";
-    
 
     if(req.body.email =="")
     {
@@ -95,7 +94,9 @@ app.post("/login",(req,res)=>{
         title:"login",
         headingInfo: "Login Page",
         emailError: `${emailError}`,
-        passError:`${passError}`
+        passError:`${passError}`,
+        oldemail:`${req.body.email}`,
+        oldpass:`${req.body.password}`
 
     });
 
@@ -104,29 +105,86 @@ app.post("/login",(req,res)=>{
 
 app.post("/signup",(req,res)=>{
 
-    const {firstName,lastName,email,message} = req.body;
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
-    const msg = {
-    to: 'luxisllx@gmail.com',
-    from: `${email}`,
-    subject: 'Contact Us Form Submit',
-    html: 
-    `Visitor's Full Name ${firstName} ${lastName}
-    Visitor's Email Address ${email}
-    Visitor's Message ${message}
-    `,
-    };
-    //Asynchronous operation (Dunno how long this will take to execute)
+    let nameError = "";
+    let emailError = "";
+    let passError="";
+    let error=false;
 
-    sgMail.send(msg)
-    .then(()=>{
+    if(req.body.firstName =="")
+    {
+        nameError = "Please enter a name";
+        error=true;
+    }
 
-        res.redirect("/");
-    })
-    .catch(err=>{
-        console.log(`Error ${err}`);
-    })
+    if(req.body.email =="")
+    {
+        emailError = "Please enter a valid Email";
+        error=true;
+    }
+
+    if(req.body.password =="")
+    {
+        passError = "Please enter a valid password";
+        error=true;
+    }
+
+    if(req.body.password!==req.body.password_repeat){
+        passError = "Passwords do not match";
+        error=true;
+    }
+
+    if(req.body.password.length<6||req.body.password.length>12)
+    {
+        passError = "Please enter password between 6 to 12 characters";
+        error=true;
+    }
+    
+    if(error){
+        console.log("ERROR!");
+        res.render("signup",{
+            title:"signup",
+            headingInfo: "Sign Up Page",
+            emailError: `${emailError}`,
+            passError:`${passError}`,
+            nameError: `${nameError}`,
+            oldname:`${req.body.firstName}`,
+            oldemail:`${req.body.email}`,
+            oldpass:`${req.body.password}`,
+            oldpass_repeat:`${req.body.oldpass_repeat}`
+    
+        });
+    }
+    else{
+        console.log("NO ERROR!");
+        const {firstName,email,password,password_repeat} = req.body;
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+        const msg = {
+        to: 'luxisllx@gmail.com',
+        from: `${email}`,
+        subject: 'Welcome to Luxia',
+        html: 
+        `Visitor's Full Name ${firstName}
+        Visitor's Email Address ${email}
+        Visitor's Password ${password}
+        `,
+        };
+        //Asynchronous operation (Dunno how long this will take to execute)
+    
+        sgMail.send(msg)
+        .then(()=>{
+    
+            res.render("dashboard",{
+                title:"Dashboard",
+                headingInfo: "Dashboard Page",
+        
+            });
+        })
+        .catch(err=>{
+            console.log(`Error ${err}`);
+        })
+    }
+    
     
     
 });
