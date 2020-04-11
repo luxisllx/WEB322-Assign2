@@ -51,12 +51,32 @@ header
 
 }
 
+@media (max-width: 768px) {
+    header
+{
+    background-color: black;
+    display:block;
+    width:100%;
+    grid-template-columns: 1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr ;
+    
+
+}
+}
+
 .logo 
 {
     width: 200%;
     height:100%;
     
       
+}
+
+@media (max-width: 768px) {
+    .logo 
+    {
+        width: 100%;
+          
+    }
 }
 
 .logo2
@@ -127,10 +147,34 @@ nav > ul > li > a
     justify-content: space-around;
 }
 
+@media (max-width: 768px) {
+
+.navbar
+{
+    display: block;
+    width: 100%;
+
+
+}
+}
+
 .navitem{
     color:#fff;
     text-decoration: none;
     font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+.navitem
+{
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+
+}
 }
 
 
