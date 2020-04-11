@@ -29,10 +29,15 @@
             -->
             <nav class="navbar">
                 
-                    <a class="navitem" href="/">Home</a></li>
-                    <a class="navitem" href="/login">Login</a></li>
-                    <a class="navitem" href="/signup">SignUp</a></li>
-                    <a class="navitem" href="/products">Products</a></li>
+                    <li><a class="navitem" href="/">Home</a></li>
+                    <li><a class="navitem" href="/products">Products</a></li>
+                    {{#if user }}
+                        <li><a class="navitem" href="/dashboard">Dashboard</a></li>
+                        <li><a class="navitem" href="/logout">logout</a></li>
+                    {{else}}
+                        <li><a class="navitem" href="/login">Login</a></li>
+                        <li><a class="navitem" href="/signup">SignUp</a></li>
+                    {{/if}}
 
             </nav>
 

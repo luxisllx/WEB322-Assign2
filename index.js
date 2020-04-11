@@ -6,18 +6,31 @@ const exphbs= require("express-handlebars");
 
 const mongoose = require('mongoose');
 
+const session = require('express-session');
+
 const bodyParser = require("body-parser");
 require('dotenv').config({path:"./config/keys.env"});
-
-//This tells express to set up our template engine has handlebars
-app.engine("handlebars",exphbs());
-app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false}));
 
-const router = express.Router();
+//This tells express to set up our template engine has handlebars
+app.engine("handlebars",exphbs());
+app.set("view engine", "handlebars");
+
+app.use(session({
+    secret: `${process.env.SECRET_KEY}`,
+    resave: false,
+    saveUninitialized: true
+  }))
+
+app.use((req,res,next)=>{
+  
+    res.locals.user= req.session.userInfo;
+
+    next();
+})
 
 //load controllers
 const generalController = require("./controllers/general");

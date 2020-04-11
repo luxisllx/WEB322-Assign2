@@ -5,6 +5,11 @@ const categoryModel = require("../model/categories");
 const bestsellerModel = require("../model/bestseller");
 const userModel = require("../model/User");
 
+const bcrypt = require("bcryptjs");
+
+const isAuthenticated = require("../middleware/auth");
+const dashBoardLoader = require("../middleware/authorization");
+
 //Route for the Home Page
 router.get("/",(req,res)=>{
 
@@ -60,6 +65,89 @@ router.post("/login",(req,res)=>{
         passError="Please enter a valid Password";
     }
 
+    if(req.body.email =="" || req.body.password ==""){
+        res.render("login",{
+            title:"login",
+            headingInfo: "Login Page",
+            emailError: `${emailError}`,
+            passError:`${passError}`,
+            oldemail:`${req.body.email}`,
+            oldpass:`${req.body.password}`
+
+        });
+    }
+    else{
+        //Check to see if the user's email exist in the database
+
+        const errors=[];
+
+        userModel.findOne({email:req.body.email})
+        .then((user)=>{
+    
+            //there was no matching email
+            if(user==null)
+            {
+                emailError = "";
+                passError = "";
+
+                errors.push("Sorr, Your email/password is incorrect!");
+
+                res.render("login",{
+                    title:"login",
+                    headingInfo: "Login Page",
+                    emailError: `${emailError}`,
+                    passError:`${passError}`,
+                    oldemail:`${req.body.email}`,
+                    oldpass:`${req.body.password}`,
+                    errors
+        
+                });
+            }
+    
+            //There is a matching email
+            else
+            {
+                bcrypt.compare(req.body.password,user.password)
+                .then((isMatched)=>{
+    
+                    //password match
+                    if(isMatched==true)
+                    {
+                        req.session.userInfo = user;
+    
+                        res.redirect("dashboard");
+                    }
+    
+                    //no match
+                    else
+                    {
+                        emailError = "";
+                        passError = "";
+
+                        errors.push("Sorr, Your email/password is incorrect!");
+
+                        res.render("login",{
+                            title:"login",
+                            headingInfo: "Login Page",
+                            emailError: `${emailError}`,
+                            passError:`${passError}`,
+                            oldemail:`${req.body.email}`,
+                            oldpass:`${req.body.password}`,
+                            errors
+                
+                        });
+                    }
+    
+                })
+                .catch(err=>console.log(`Error ${err}`));
+    
+            }
+    
+    
+        })
+        .catch(err=>console.log(`Error ${err}`));
+    }
+/*
     res.render("login",{
         title:"login",
         headingInfo: "Login Page",
@@ -69,9 +157,17 @@ router.post("/login",(req,res)=>{
         oldpass:`${req.body.password}`
 
     });
-
+*/
 });
 
+router.get("/logout",(req,res)=>{
+
+    req.session.destroy();
+    res.redirect("/login")
+    
+})
+
+router.get("/dashboard",isAuthenticated,dashBoardLoader);
 
 router.post("/signup",(req,res)=>{
 
@@ -160,11 +256,7 @@ router.post("/signup",(req,res)=>{
                     sgMail.send(msg)
                     .then(()=>{
                 
-                        res.render("dashboard",{
-                            title:"Dashboard",
-                            headingInfo: "Dashboard Page",
-                            message: "Thank you, you are now registered as a member of Luxia. Happy Shopping!"
-                        });
+                        res.redirect(`login`)
                     })
                     .catch(err=>{
                         console.log(`Error ${err}`);
