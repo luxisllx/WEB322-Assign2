@@ -1,0 +1,75 @@
+<h2>Product Dashboard</h2>
+ 
+ <section class="tasks-container">
+   
+
+     <form method="POST" action="/task/search">
+        <label>Search By</label>
+        <select name="task-search">
+                <option value="all">All tasks</option>
+                <option value="open">Open Tasks</option>
+                <option value="on-hold">On Hold Tasks</option>
+                <option value="closed">Closed Tasks</option>
+                <option value="pending">Pending Tasks</option>
+                <option value="low-priority">Low Priority</option>
+                <option value="medium-priority">Meidum Priority</option>
+                <option value="high-priority">High Priority</option>
+        </select>
+        <input type="submit" value="Search">
+     </form> <br><br>
+
+    <table border="1" style="text-align: center;">
+        <thead>
+                <th>title</th>
+                <th>description</th>
+                <th>image</th>
+                <th>category</th>
+                <th>price</th>
+                <th>bestseller</th>
+                <th>quatity</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+                <tr>
+                   <td>
+                        <a href="" class="task-title">{{this.title}}</a>
+                   </td>
+                   <td>
+                       <span>{{this.description}}</span>
+                      
+                   </td>
+                   <td>
+                        <span>{{this.image}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.category}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.price}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.bestseller}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.quantity}}</span>
+                   </td>
+                   <td>
+                        <a href="/admin/edit/{{this.id}}" class="edit-delete-button">Edit</a>
+                        <a href="/admin/delete/{{this.id}}?method=DELETE" class="edit-delete-button">Delete</a>
+                   </td> 
+                </tr>
+
+                {{else}}
+                    <td colspan="5">
+                        <p>No products in the database</p>
+                    </td>
+
+                {{/each}}
+    </tbody>
+    </table>
+ 
+</section>
+
+<div id="tasks-links-holder">
+    <a href="/admin/add">Add a Product</a>
+</div>

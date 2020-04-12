@@ -1,0 +1,40 @@
+    <h2>Add Product</h2>
+    
+    {{#each errors}}
+        <div>{{this}}</div>
+    {{/each}}
+
+    <form method="POST" action="add"  enctype="multipart/form-data">
+
+        <label>Name</label>
+        <input type="text" name="name" id="name"> <br><br>
+
+        <label>Price</label>
+        <input type="number" name="price" id="price"> <br><br>
+
+        <label>Description</label>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        <label>Category</label>
+        <select name="category" id="category">
+            <option value="Lips">Lips</option>
+            <option value="Face">Face</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Sale">Sale</option>
+        </select>
+        <br><br>
+
+        <label>Quantity</label>
+        <input type="number" name="quantity" id="quantity"> <br><br>
+
+        <input type="checkbox" id="best" name="best" value="true">
+        <label for="best"> This is the best seller.</label><br><br>
+
+        <label>Photo Upload</label>
+        <input type="file" name="photo" id="photo" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"> <br><br>
+
+        <br>
+
+        <input type="submit" value="Add Product">
+
+    </form>

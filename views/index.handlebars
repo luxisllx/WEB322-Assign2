@@ -21,9 +21,11 @@
 <h1>Best Sellers</h1>
 <div class = "product">
     {{#each bestseller}}
-        <div class = "product1">
-            <img class = "one" src = "{{this.image}}" alt = "2" />
-            <p class = "productinfo">{{this.description}}</p>
-        </div>
+        {{#if this.bestseller }}
+            <div class = "product1">
+                <img class = "one" src = "/uploads/{{this.image}}" alt = "2" />
+                <p class = "productinfo">{{this.description}}</p>
+            </div>
+        {{/if}}
     {{/each}}
 </div>

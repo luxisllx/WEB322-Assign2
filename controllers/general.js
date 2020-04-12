@@ -4,16 +4,46 @@ const router = express.Router();
 const categoryModel = require("../model/categories");
 const bestsellerModel = require("../model/bestseller");
 const userModel = require("../model/User");
+const beautyCategoriesModel = require("../model/beautyCategories");
+const productModel = require("../model/productNew");
 
 const bcrypt = require("bcryptjs");
 
 const isAuthenticated = require("../middleware/auth");
-const dashBoardLoader = require("../middleware/authorization");
+const isAuthorized = require("../middleware/authorization");
 
 //Route for the Home Page
 router.get("/",(req,res)=>{
 
    
+    productModel.find()
+    .then((products)=>{
+        const filteredProduct =   products.map(product=>{
+
+
+            return {
+
+                id: product._id,
+                title:product.title,
+                description:product.description,
+                image :product.photo,
+                category : product.category,
+                price : product.price,
+                bestseller:product.best
+            }
+        });
+        
+        res.render("index",{
+            title:"Home",
+            headingInfo: "Home Page",
+            categories :beautyCategoriesModel.getAllProducts(),
+            bestseller :filteredProduct
+    
+        });
+
+    })
+    .catch(err=>console.log(`Error happened when pulling products from the database :${err}`));
+    /*
     res.render("index",{
         title:"Home",
         headingInfo: "Home Page",
@@ -21,6 +51,7 @@ router.get("/",(req,res)=>{
         bestseller :bestsellerModel.getAllBestseller()
 
     });
+    */
 
 });
 
@@ -167,7 +198,12 @@ router.get("/logout",(req,res)=>{
     
 })
 
-router.get("/dashboard",isAuthenticated,dashBoardLoader);
+//router.get("/dashboard",isAuthenticated,dashBoardLoader);
+
+router.get("/dashboard",isAuthenticated,isAuthorized,(req,res)=>
+{
+    res.render("adminDashBoard");
+});
 
 router.post("/signup",(req,res)=>{
 

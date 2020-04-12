@@ -1,6 +1,6 @@
 
-<h1>Beauty: Lips</h1>
-<p>Search by Category</p>
+<h1>Beauty:</h1>
+<!--
 <div class = "product">
    
     {{#each products}}
@@ -12,8 +12,22 @@
    
     {{/each}}
 </div>
+-->
+     <form method="POST" action="/products">
+        <label>Search By Category: </label>
+        <select name="category">
 
-
+                <option value="All">All</option>
+                {{#each products}}
+    
+                <option value="{{this.description}}">{{this.description}}</option>
+   
+                {{/each}}
+        </select>
+        <input type="submit" value="Search">
+     </form> <br>
+<p>Current Category: {{this.currentCategory}}</p>
+<br>
 <p>Product List</p>
 <div class = "productbest">
     {{#each productsbest}}
@@ -27,8 +41,8 @@
 
 
             
-            <img class = "two" src = "{{this.image}}" alt = "2" />
-             <p class = "producttitle">{{this.title}}</p>
+            <img class = "two" src = "/uploads/{{this.image}}" alt = "2" />
+            <p class = "producttitle">{{this.title}}</p>
             <p class = "productinfo">{{this.category}}</p>
             <p class = "productprice">{{this.price}}</p>
            

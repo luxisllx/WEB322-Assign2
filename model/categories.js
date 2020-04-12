@@ -7,7 +7,7 @@ const categories=
 
         this.fakeDB.push({image:'./img/skin.jpg',description:`Skincare`,price:`1349.99`});
     
-        this.fakeDB.push({image:'./img/makeup.jpg',description:`Beauty `,price:`1749.99`});
+        this.fakeDB.push({image:'./img/makeup.jpg',description:`Beauty`,price:`1749.99`});
     
         this.fakeDB.push({image:'./img/bag.jpg',description:`Luxury Handbag`,price:`1949.99`});
 

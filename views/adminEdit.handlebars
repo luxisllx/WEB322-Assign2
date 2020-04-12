@@ -1,0 +1,72 @@
+<h2>Update Product</h2>
+    <form method="POST" action="/admin/update/{{_id}}?method=PUT" enctype="multipart/form-data">
+
+        <label>Name</label>
+        <input type="text" name="name" id="name" value="{{name}}"> <br><br>
+
+        <label>Price</label>
+        <input type="number" name="price" id="price" value="{{price}}"> <br><br>
+
+        <label>Description</label>
+        <textarea id="description" name="description">{{description}}</textarea><br><br>
+
+        {{#ifEquals category "Lips" }}
+        <label>Category</label>
+        <select name="category" id="category">
+            <option value="Lips" selected>Lips</option>
+            <option value="Face">Face</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Sale">Sale</option>
+        </select>
+        <br><br>
+        {{/ifEquals}}
+
+        {{#ifEquals category "Face" }}
+        <label>Category</label>
+        <select name="category" id="category">
+            <option value="Lips">Lips</option>
+            <option value="Face" selected>Face</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Sale">Sale</option>
+        </select>
+        <br><br>
+        {{/ifEquals}}
+
+        {{#ifEquals category "Eyes" }}
+        <label>Category</label>
+        <select name="category" id="category">
+            <option value="Lips">Lips</option>
+            <option value="Face">Face</option>
+            <option value="Eyes" selected>Eyes</option>
+            <option value="Sale">Sale</option>
+        </select>
+        <br><br>
+        {{/ifEquals}}
+
+        {{#ifEquals category "Sale" }}
+        <label>Category</label>
+        <select name="category" id="category">
+            <option value="Lips">Lips</option>
+            <option value="Face">Face</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Sale"selected>Sale</option>
+        </select>
+        <br><br>
+        {{/ifEquals}}
+
+        <label>Quantity</label>
+        <input type="number" name="quantity" id="quantity" value="{{quantity}}"> <br><br>
+        
+        {{#if best }}
+            <input type="checkbox" id="best" name="best" value="true" checked="true">
+            <label for="best"> This is the best seller.</label><br><br>
+        {{else}}
+            <input type="checkbox" id="best" name="best" value="true">
+            <label for="best"> This is the best seller.</label><br><br>
+        {{/if}}
+
+        <label>Photo Upload</label>
+        <input type="file" name="photo" id="photo" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"> <br><br>
+
+        <input type="submit" value="Update Product">
+    </form>
