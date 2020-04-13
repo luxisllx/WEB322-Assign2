@@ -202,7 +202,7 @@ router.get("/logout",(req,res)=>{
 
 router.get("/dashboard",isAuthenticated,isAuthorized,(req,res)=>
 {
-    res.render("adminDashBoard");
+    res.render("adminDashboard");
 });
 
 router.post("/signup",(req,res)=>{

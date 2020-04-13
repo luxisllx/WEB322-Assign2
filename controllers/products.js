@@ -17,7 +17,7 @@ router.get("/",(req,res)=>{
             return {
 
                 id: product._id,
-                title:product.title,
+                title:product.name,
                 description:product.description,
                 image :product.photo,
                 category : product.category,
@@ -61,7 +61,7 @@ router.post("/",(req,res)=>{
             return {
 
                 id: product._id,
-                title:product.title,
+                title:product.name,
                 description:product.description,
                 image :product.photo,
                 category : product.category,
@@ -94,7 +94,7 @@ router.post("/",(req,res)=>{
                 return {
 
                     id: product._id,
-                    title:product.title,
+                    title:product.name,
                     description:product.description,
                     image :product.photo,
                     category : product.category,
@@ -127,6 +127,24 @@ router.post("/",(req,res)=>{
  */  
 });
 
+
+
+router.get("/productDes/:id",(req,res)=>{
+
+    productModel.findOne({_id:req.params.id})
+    .then((product)=>{   
+        res.render("productDes",{
+            title:"Products",
+            headingInfo: "Products Page",
+            product_name: product.name,
+            product_price: product.price,
+            product_description: product.description,
+            product_available: product.quantity>0,
+        });
+    })
+    .catch(err=>console.log(`Error happened when finding product in the database :${err}`));
+
+});
 
 
 module.exports = router;

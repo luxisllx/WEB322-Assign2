@@ -1,0 +1,26 @@
+<div class = "productDesDiv">
+    <img class = "productImage" src = "/uploads/photo_5e92b77075b8204c304e7a7d.jpg"/>
+
+    <div class = "productDes">
+        <p class = "productDes_name">{{product_name}}</p>
+        <br>
+        <p>{{product_price}}</p>
+        <br>
+        <p>{{product_description}}</p>
+        <br>
+        {{#if product_available }}
+        <p>In Stock</p>
+        {{else}}
+        <p>Out of Stock</p>
+        {{/if}}
+        <br><br>
+
+        <form method="POST" action="/products">
+
+            <label>Quantity</label>
+            <input type="number" name="quantity" id="quantity"> <br><br>
+
+            <input type="submit" value="Add to Cart">
+        </form>
+    <div>
+</div>

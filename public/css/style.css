@@ -471,3 +471,27 @@ text-decoration: none;
     color: black;
     
 }
+
+.productDesDiv{
+    display:flex;
+}
+
+@media (max-width: 768px) {
+    .productDesDiv{
+        display:block;
+    }
+}
+
+.productImage{
+    padding: 5% 10%;
+    width:50%;
+}
+
+.productDes{
+    padding: 5% 10%;
+    width:50%;
+}
+
+.productDes_name{
+    font-weight: bold;
+}
