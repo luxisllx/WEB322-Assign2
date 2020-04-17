@@ -352,7 +352,10 @@ nav > ul > li > a
     opacity: 0.8;
     background-size:cover;
     background-repeat: no-repeat;
+    padding-top: 30px;
     padding-bottom: 30px;
+    
+    
 }
 .sign
 {
@@ -468,7 +471,8 @@ text-decoration: none;
 
 .dash
 {
-    color: black;
+    color:black;
+    text-align:center;
     
 }
 
@@ -485,11 +489,24 @@ text-decoration: none;
 .productImage{
     padding: 5% 10%;
     width:50%;
-}
 
+}
+@media (max-width: 768px) {
+    .productImage{
+        width:100%;
+        padding:20%;
+        
+    }
+}
 .productDes{
     padding: 5% 10%;
     width:50%;
+}
+@media (max-width: 768px) {
+    .productDes{
+        width:100%;
+        
+    }
 }
 
 .productDes_name{
@@ -514,4 +531,87 @@ text-decoration: none;
 
 .addListColor {
     color: rgb(17, 72, 155);
+}
+
+.adminadd {
+    border-style: inset;
+    border: 2px solid pink;
+    border-radius: 5px;
+    border-width:2px; 
+    width: 100%;
+}
+
+.admincolor{
+    color:black;
+}
+
+.adminaddcolor{
+    color:black;
+    text-align: center;
+}
+
+.signup1
+{
+    margin: 0 auto;
+    border-style:groove;
+    padding:40px;
+
+    width:50%;
+    font-family: 'Slabo 27px', serif;
+    background-color:white;
+   
+}
+
+.signup2
+{
+    margin: 0 auto;
+    border-style:groove;
+    padding:10%;
+    width: 60%;
+    font-family: 'Slabo 27px', serif;
+    background-color:white;
+   
+}
+
+.signup3
+{
+    margin: 0 auto;
+    border-style:groove;
+    padding:10%;
+    width: 90%;
+    font-family: 'Slabo 27px', serif;
+    background-color:white;
+   
+}
+.addListColor1{
+    color:black;
+    
+}
+
+.newLuxia {
+font-size: 50%;
+text-align: center;
+font-family: 'Slabo 27px', serif;
+font-size: 75%;
+
+}
+
+.orderTotal{
+    
+    
+    color: red;
+}
+
+.shopCartPad{
+    padding-left:70%
+}
+.orderNow{
+font-size: 100%;
+text-align: center;
+font-family: 'Slabo 27px', serif;
+font-size: 75%;
+border-style:groove;
+padding: 10px;
+
+
 }

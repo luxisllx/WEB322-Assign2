@@ -1,5 +1,7 @@
 
-<h1 class = "dash">User Shopping Cart, {{user.name}}</h1><br>
+<div class = "back">
+<div class="signup3">
+<h1 class = "dash">User Shopping Cart<br><br> {{user.name}}</h1><br>
 
 {{#each orders}}
 <div class = "productDesDiv">
@@ -29,12 +31,15 @@
         {{#each errors}}
             <div class="productDes_message">{{this}}</div>
         {{/each}}
-        
+
+  <div class = "shopCartPad">     
 <form method="POST" action="shoppingCart">
-        <label>Order Total: CAD ${{totalPrice}}</label>
+        <label class= "orderTotal">Order Total: CAD ${{totalPrice}}</label> <br>
         <input type="hidden" name="totalPrice" id="totalPrice" value="{{totalPrice}}">
         <br>
-        <input type="submit" value="Place Order Now">
+        <input class = "orderNow" type="submit" value="Place Order Now">
 </form> <br>
-
+</div> 
+</div>
+</div>
 

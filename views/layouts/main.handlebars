@@ -33,7 +33,7 @@
                     <li><a class="navitem" href="/products">Products</a></li>
                     {{#if user }}
                         <li><a class="navitem" href="/dashboard">Dashboard</a></li>
-                        <li><a class="navitem" href="/logout">logout</a></li>
+                        <li><a class="navitem" href="/logout">Logout</a></li>
                     {{else}}
                         <li><a class="navitem" href="/login">Login</a></li>
                         <li><a class="navitem" href="/signup">SignUp</a></li>
@@ -43,9 +43,11 @@
 
          </header>
         <main>
+           
             <section>
                 {{{body}}}
             </section>
+            
         </main>
     </div>
 

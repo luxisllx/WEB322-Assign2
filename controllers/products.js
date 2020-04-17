@@ -189,7 +189,7 @@ router.post("/productDes/:id",(req,res)=>{
                         product_img: product.photo,
                         product_price: product.price,
                         product_description: product.description,
-                        product_available: product.quantity>0,
+                        product_available: product.quantity,
                         _id:req.params.id,
                         errors
                     });
@@ -210,7 +210,7 @@ router.post("/productDes/:id",(req,res)=>{
                 product_img: product.photo,
                 product_price: product.price,
                 product_description: product.description,
-                product_available: product.quantity>0,
+                product_available: product.quantity,
                 _id:req.params.id,
                 errors
             });
@@ -229,7 +229,7 @@ router.post("/productDes/:id",(req,res)=>{
                 product_img: product.photo,
                 product_price: product.price,
                 product_description: product.description,
-                product_available: product.quantity>0,
+                product_available: product.quantity,
                 _id:req.params.id,
                 errors
             });

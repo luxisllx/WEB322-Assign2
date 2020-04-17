@@ -145,7 +145,7 @@ router.put("/update/:id",isAuthenticated,isAuthorized,(req,res)=>{
     }
 
     if(product.best!="true"){
-        console.log(product.best);
+        //console.log(product.best);
         product.best = false;
     }
     //console.log(req.files);

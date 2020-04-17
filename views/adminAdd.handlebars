@@ -1,4 +1,6 @@
-    <h2>Add Product</h2>
+    <div class = "back">
+    <div class="signup1">
+    <h2 class = "adminaddcolor">Add Product</h2>
     
     {{#each errors}}
         <div>{{this}}</div>
@@ -6,16 +8,16 @@
 
     <form method="POST" action="add"  enctype="multipart/form-data">
 
-        <label>Name</label>
-        <input type="text" name="name" id="name"> <br><br>
+        <label class = "admincolor">Name</label> <br>
+        <input class = "adminadd" type="text" name="name" id="name"> <br><br>
 
-        <label>Price</label>
-        <input type="number" name="price" id="price"> <br><br>
+        <label class = "admincolor">Price</label> <br>
+        <input class = "adminadd" type="number" name="price" id="price"> <br><br>
 
-        <label>Description</label>
-        <textarea id="description" name="description"></textarea><br><br>
+        <label class = "admincolor">Description</label> <br>
+        <textarea class = "adminadd" id="description" name="description"></textarea><br><br>
 
-        <label>Category</label>
+        <label class = "admincolor">Category</label>
         <select name="category" id="category">
             <option value="Lips">Lips</option>
             <option value="Face">Face</option>
@@ -24,17 +26,19 @@
         </select>
         <br><br>
 
-        <label>Quantity</label>
-        <input type="number" name="quantity" id="quantity"> <br><br>
+        <label class = "admincolor">Quantity</label> <br>
+        <input class = "adminadd" type="number" name="quantity" id="quantity"> <br><br>
 
         <input type="checkbox" id="best" name="best" value="true">
-        <label for="best"> This is the best seller.</label><br><br>
+        <label class = "admincolor" for="best"> This is a best seller.</label><br><br>
 
-        <label>Photo Upload</label>
+        <label class = "admincolor">Photo Upload</label>
         <input type="file" name="photo" id="photo" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"> <br><br>
 
         <br>
 
-        <input type="submit" value="Add Product">
+        <input class = "admincolor" type="submit" value="Add Product">
 
     </form>
+    </div>
+    </div>
