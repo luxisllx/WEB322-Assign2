@@ -501,7 +501,7 @@ text-decoration: none;
 }
 
 .addListProduct{
-    background-color: black;
+    
     
     border-style: outset;
     width:100%;
@@ -509,4 +509,9 @@ text-decoration: none;
     border-radius:5px;
     border-width:1px;
     color:white; 
+    text-align: center;
+}
+
+.addListColor {
+    color: rgb(17, 72, 155);
 }

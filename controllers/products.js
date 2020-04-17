@@ -202,7 +202,7 @@ router.post("/productDes/:id",(req,res)=>{
     else if(req.session.userInfo && req.session.userInfo.type=="Admin"){
         productModel.findOne({_id:req.params.id})
         .then((product)=>{   
-            errors.push("Admin account is not eligiable for shopping!");
+            errors.push("Admin account is not eligible for shopping!");
             res.render("productDes",{
                 title:"Products",
                 headingInfo: "Products Page",
