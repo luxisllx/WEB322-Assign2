@@ -57,10 +57,18 @@
             <a href="#" class="fa fa-linkedin"></a>
             <a href="#" class="fa fa-instagram"></a>
         <div class = "footbox">
-            <a href = "/" class = "footmenu"> Home </a>
-            <a href = "/login" class = "footmenu"> Login </a>
-            <a href = "/signup" class = "footmenu"> Sign-up </a>
-            <a href = "/products" class = "footmenu"> Products </a>
+          
+
+               <a href = "/" class = "footmenu"> Home </a>
+                    <a href = "/products" class = "footmenu"> Products </a>
+                    {{#if user }}
+                        <a class="footmenu" href="/dashboard">Dashboard</a>
+                        <a class="footmenu" href="/logout">logout</a>
+                    {{else}}
+                        <a class="footmenu" href="/login">Login</a>
+                        <a class="footmenu" href="/signup">SignUp</a>
+                    {{/if}}
+
         </div>
         <div class="copyright"> 
             <p>Copyright © 2020 Designed and Coded By Luxi Liang </p>

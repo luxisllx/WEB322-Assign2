@@ -23,7 +23,7 @@ router.get("/",(req,res)=>{
             return {
 
                 id: product._id,
-                title:product.title,
+                title:product.name,
                 description:product.description,
                 image :product.photo,
                 category : product.category,
@@ -154,7 +154,7 @@ router.post("/login",(req,res)=>{
                         emailError = "";
                         passError = "";
 
-                        errors.push("Sorr, Your email/password is incorrect!");
+                        errors.push("Sorry, Your email/password is incorrect!");
 
                         res.render("login",{
                             title:"login",

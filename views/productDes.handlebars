@@ -4,15 +4,18 @@
     <div class = "productDes">
         <p class = "productDes_name">{{product_name}}</p>
         <br>
-        <p>{{product_price}}</p>
+        <p>CAD ${{product_price}}</p>
         <br>
         <p>{{product_description}}</p>
         <br>
+        <p>Available Quantity: {{product_available}}</p>
+        <!--
         {{#if product_available }}
         <p>In Stock</p>
         {{else}}
         <p>Out of Stock</p>
         {{/if}}
+        -->
         <br><br>
 
         <form method="POST" action="/products/productDes/{{_id}}">

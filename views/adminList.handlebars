@@ -3,30 +3,17 @@
  <section class="tasks-container">
    
 
-     <form method="POST" action="/task/search">
-        <label>Search By</label>
-        <select name="task-search">
-                <option value="all">All tasks</option>
-                <option value="open">Open Tasks</option>
-                <option value="on-hold">On Hold Tasks</option>
-                <option value="closed">Closed Tasks</option>
-                <option value="pending">Pending Tasks</option>
-                <option value="low-priority">Low Priority</option>
-                <option value="medium-priority">Meidum Priority</option>
-                <option value="high-priority">High Priority</option>
-        </select>
-        <input type="submit" value="Search">
-     </form> <br><br>
+
 
     <table border="1" style="text-align: center;">
         <thead>
-                <th>title</th>
-                <th>description</th>
-                <th>image</th>
-                <th>category</th>
-                <th>price</th>
-                <th>bestseller</th>
-                <th>quatity</th>
+                <th> Title </th>
+                <th> Description </th>
+                <th> Image </th>
+                <th> Category </th>
+                <th> Price </th>
+                <th> Bestseller </th>
+                <th> Quantity </th>
         </thead>
         <tbody>
             {{#each data}}

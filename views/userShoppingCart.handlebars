@@ -8,7 +8,7 @@
     <div class = "productDes">
         <p class = "productDes_name">{{this.title}}</p>
         <br>
-        <p>CND$ {{this.price}}</p>
+        <p>CAD ${{this.price}}</p>
         <br>
         <p>{{this.description}}</p>
         <br>
@@ -31,7 +31,7 @@
         {{/each}}
         
 <form method="POST" action="shoppingCart">
-        <label>Total Price: {{totalPrice}}</label>
+        <label>Order Total: CAD ${{totalPrice}}</label>
         <input type="hidden" name="totalPrice" id="totalPrice" value="{{totalPrice}}">
         <br>
         <input type="submit" value="Place Order Now">

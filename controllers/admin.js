@@ -141,10 +141,11 @@ router.put("/update/:id",isAuthenticated,isAuthorized,(req,res)=>{
         description : req.body.description,
         category : req.body.category,
         quantity : req.body.quantity,
-        best : req.body.best
+        best : req.body.bestS
     }
 
-    if(product.best!=true){
+    if(product.best!="true"){
+        console.log(product.best);
         product.best = false;
     }
     //console.log(req.files);
@@ -165,15 +166,14 @@ router.put("/update/:id",isAuthenticated,isAuthorized,(req,res)=>{
           } 
           else {
             productModel.updateOne({_id:req.params.id},product)
-            .then((product)=>{
-
-                req.files.photo.name = `photo_${product._id}${path.parse(req.files.photo.name).ext}`;
+            .then((productnew)=>{
+                req.files.photo.name = `photo_${req.params.id}${path.parse(req.files.photo.name).ext}`;
 
                 req.files.photo.mv(`public/uploads/${req.files.photo.name}`)
                 .then(()=>{
 
-
-                    productModel.updateOne({_id:product._id},{
+                    
+                    productModel.updateOne({_id:req.params.id},{
                         photo:req.files.photo.name
                     })
                     .then(()=>{
