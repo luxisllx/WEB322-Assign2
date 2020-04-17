@@ -1,5 +1,5 @@
 <div class = "productDesDiv">
-    <img class = "productImage" src = "/uploads/photo_5e92b77075b8204c304e7a7d.jpg"/>
+    <img class = "productImage" src = "/uploads/{{product_img}}"/>
 
     <div class = "productDes">
         <p class = "productDes_name">{{product_name}}</p>
@@ -15,12 +15,17 @@
         {{/if}}
         <br><br>
 
-        <form method="POST" action="/products">
+        <form method="POST" action="/products/productDes/{{_id}}">
 
             <label>Quantity</label>
-            <input type="number" name="quantity" id="quantity"> <br><br>
+            <input type="number" name="quantity" id="quantity" value="1"> <br><br>
 
             <input type="submit" value="Add to Cart">
         </form>
+
+        <br><br>
+        {{#each errors}}
+            <div class="productDes_message">{{this}}</div>
+        {{/each}}
     <div>
 </div>

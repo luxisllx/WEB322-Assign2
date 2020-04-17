@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-const categoryModel = require("../model/categories");
-const bestsellerModel = require("../model/bestseller");
+
 const userModel = require("../model/User");
 const beautyCategoriesModel = require("../model/beautyCategories");
 const productModel = require("../model/productNew");
@@ -121,7 +120,7 @@ router.post("/login",(req,res)=>{
                 emailError = "";
                 passError = "";
 
-                errors.push("Sorr, Your email/password is incorrect!");
+                errors.push("Sorry, Your email/password is incorrect!");
 
                 res.render("login",{
                     title:"login",

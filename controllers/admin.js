@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router();
 
-const categoryModel = require("../model/categories");
-const bestsellerModel = require("../model/bestseller");
 const productModel = require("../model/productNew");
 const path = require("path");
 

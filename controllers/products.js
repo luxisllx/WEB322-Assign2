@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router();
 
 const beautyCategoriesModel = require("../model/beautyCategories");
-const productsbestModel = require("../model/productsbest");
 
 const productModel = require("../model/productNew");
+const userProductModel = require("../model/userProduct");
 
 router.get("/",(req,res)=>{
 
@@ -103,7 +103,7 @@ router.post("/",(req,res)=>{
                 }
 
             });
-
+            
             res.render("products",{
                 title:"Products",
                 headingInfo: "Products Page",
@@ -130,19 +130,98 @@ router.post("/",(req,res)=>{
 
 
 router.get("/productDes/:id",(req,res)=>{
-
+    const errors=[];
     productModel.findOne({_id:req.params.id})
     .then((product)=>{   
         res.render("productDes",{
             title:"Products",
             headingInfo: "Products Page",
+            product_img: product.photo,
             product_name: product.name,
             product_price: product.price,
             product_description: product.description,
             product_available: product.quantity>0,
+            _id:req.params.id,
+            errors
         });
     })
     .catch(err=>console.log(`Error happened when finding product in the database :${err}`));
+
+});
+
+router.post("/productDes/:id",(req,res)=>{
+    const errors=[];
+
+    if(req.session.userInfo && req.session.userInfo.type!="Admin")
+    {
+
+        const newOrder = {
+            user_id : req.session.userInfo._id,
+            product_id : req.params.id,
+            quantity : req.body.quantity
+        }
+
+        const order =  new userProductModel(newOrder);
+            order.save()
+            .then((product)=>{
+                productModel.findOne({_id:req.params.id})
+                .then((product)=>{   
+                    errors.push("Order added to shopping cart! You can access your shopping cart from Dashboard!");
+                    res.render("productDes",{
+                        title:"Products",
+                        headingInfo: "Products Page",
+                        product_name: product.name,
+                        product_img: product.photo,
+                        product_price: product.price,
+                        product_description: product.description,
+                        product_available: product.quantity>0,
+                        _id:req.params.id,
+                        errors
+                    });
+                })
+                .catch(err=>console.log(`Error happened when finding product in the database :${err}`));
+            })
+            .catch(err=>console.log(`Error happened when inserting product in the database :${err}`));
+        
+    }
+    else if(req.session.userInfo && req.session.userInfo.type=="Admin"){
+        productModel.findOne({_id:req.params.id})
+        .then((product)=>{   
+            errors.push("Admin account is not eligiable for shopping!");
+            res.render("productDes",{
+                title:"Products",
+                headingInfo: "Products Page",
+                product_name: product.name,
+                product_img: product.photo,
+                product_price: product.price,
+                product_description: product.description,
+                product_available: product.quantity>0,
+                _id:req.params.id,
+                errors
+            });
+        })
+        .catch(err=>console.log(`Error happened when finding product in the database :${err}`));
+    }
+    else
+    {
+        productModel.findOne({_id:req.params.id})
+        .then((product)=>{   
+            errors.push("Please login first!");
+            res.render("productDes",{
+                title:"Products",
+                headingInfo: "Products Page",
+                product_name: product.name,
+                product_img: product.photo,
+                product_price: product.price,
+                product_description: product.description,
+                product_available: product.quantity>0,
+                _id:req.params.id,
+                errors
+            });
+        })
+        .catch(err=>console.log(`Error happened when finding product in the database :${err}`));
+    }
+
 
 });
 

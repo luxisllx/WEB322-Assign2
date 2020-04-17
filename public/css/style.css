@@ -495,3 +495,7 @@ text-decoration: none;
 .productDes_name{
     font-weight: bold;
 }
+
+.productDes_message{
+    color:red;
+}

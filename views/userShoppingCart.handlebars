@@ -1,0 +1,40 @@
+
+<h1 class = "dash">User Shopping Cart, {{user.name}}</h1><br>
+
+{{#each orders}}
+<div class = "productDesDiv">
+    <img class = "productImage" src = "/uploads/{{this.image}}"/>
+
+    <div class = "productDes">
+        <p class = "productDes_name">{{this.title}}</p>
+        <br>
+        <p>CND$ {{this.price}}</p>
+        <br>
+        <p>{{this.description}}</p>
+        <br>
+        <p>Quantity:{{this.quantity}}</p>
+        <br>
+        {{#if this.available }}
+        <p>In Stock</p>
+        {{else}}
+        <p>Out of Stock</p>
+        {{/if}}
+        <br>
+        <a href="/products/productDes/{{this.id}}">See details</a>
+        <br><br>
+    </div>
+</div>
+{{/each}}
+
+        {{#each errors}}
+            <div class="productDes_message">{{this}}</div>
+        {{/each}}
+        
+<form method="POST" action="shoppingCart">
+        <label>Total Price: {{totalPrice}}</label>
+        <input type="hidden" name="totalPrice" id="totalPrice" value="{{totalPrice}}">
+        <br>
+        <input type="submit" value="Place Order Now">
+</form> <br>
+
+

@@ -62,12 +62,14 @@ app.use((req,res,next)=>{
 const generalController = require("./controllers/general");
 const productController = require("./controllers/products");
 const adminController = require("./controllers/admin");
+const userController = require("./controllers/user");
 
 //map each controller to the app object
 
 app.use("/",generalController);
 app.use("/products",productController);
 app.use("/admin",adminController);
+app.use("/user",userController);
 
 
 mongoose.connect(process.env.MONGODB_CONNECT_STRING, {useNewUrlParser: true, useUnifiedTopology: true})
